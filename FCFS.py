@@ -1,6 +1,6 @@
 headers = ['Processes','Arrival Time','Burst Time','Waiting Time'
             ,'Turn-Around Time','Completion Time']
-
+            
 # Dictionary to store the output
 out = dict()
 
@@ -44,6 +44,7 @@ for i in range(0,N):
 avgWaitTime /= N
 avgTATime /= N
 
-print(f"{headers[0]:12} {headers[1]:12} {headers[2]:12} {headers[3]:12} {headers[4]:12} {headers[5]:12}")
+print(f"\n{headers[0]:^15}{headers[1]:^15}{headers[2]:^15}{headers[3]:^15}{headers[4]:^20}{headers[5]:^20}")
 for a in out:
-    print(f"{a}")
+    print(f"{a[0]:^15}{a[1][0]:^15}{a[1][1]:^15}{a[1][4]:^15}{a[1][3]:^20}{a[1][2]:^20}")
+print(f"\nAverage Waiting Time : {avgWaitTime}\n Average Turn-Around Time : {avgTATime}")
