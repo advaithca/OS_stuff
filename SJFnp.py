@@ -1,5 +1,5 @@
-print("First Come First Served scheduling Algorithm")
-print("============================================\n")
+print("Shortest Job First Algorithm")
+print("============================\n")
 
 headers = ['Processes','Arrival Time','Burst Time','Waiting Time'
             ,'Turn-Around Time','Completion Time']
@@ -19,8 +19,8 @@ for i in range(0,N):
 
     out[k] = [a,b]
 
-# storing processes in order of increasing arrival time
-out = sorted(out.items(),key=lambda i:i[1][0])
+# storing processes in order of increasing Burst time
+out = sorted(out.items(),key=lambda i:i[1][1])
 
 # storing Completion times
 for i in range(0,N):
