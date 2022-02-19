@@ -22,6 +22,7 @@ for i in range(0,N):
 out = sorted(out.items(),key=lambda i:i[1][0])
 readyQ = [x for x in out[1:]]
 
+# Storing ready queue in order of increasing Burst Times
 readyQ.sort(key=lambda i:i[1][1])
 
 # Setting completion time of first process as its burst time
