@@ -16,24 +16,31 @@ for i in range(0,N):
     k = f"P{i+1}"
     a = int(input(f"Enter Arrival time of process{i+1} :: "))
     b = int(input(f"Enter Burst time of process{i+1} :: "))
-
     out[k] = [a,b]
 
-# storing processes in order of increasing Burst time
-out = sorted(out.items(),key=lambda i:i[1][1])
+# storing processes in order of increasing arrival time
+out = sorted(out.items(),key=lambda i:i[1][0])
+readyQ = [x for x in out[1:]]
 
-# storing Completion times
-for i in range(0,N):
+readyQ.sort(key=lambda i:i[1][1])
+
+# Setting completion time of first process as its burst time
+out[0][1].append(out[0][1][1])
+
+# Calculating Completion times of rest of the processes
+for i in range(0,len(readyQ)):
     if i == 0:
-        out[i][1].append(out[i][1][0]+out[i][1][1])
-    else:    
-        out[i][1].append(out[i-1][1][2]+out[i][1][1])
+        readyQ[i][1].append(readyQ[i][1][1] + out[0][1][2])
+    else:
+        readyQ[i][1].append(readyQ[i][1][1] + readyQ[i-1][1][2])
 
-# storing turn-around times
+out.sort(key=lambda i:i[0])
+
+# Storing turn around times
 for i in range(0,N):
     out[i][1].append(out[i][1][2]-out[i][1][0])
 
-# storing waiting time
+# Storing waiting times
 for i in range(0,N):
     out[i][1].append(out[i][1][3]-out[i][1][1])
 
@@ -50,4 +57,4 @@ avgTATime /= N
 print(f"\n{headers[0]:^15}{headers[1]:^15}{headers[2]:^15}{headers[3]:^15}{headers[4]:^20}{headers[5]:^20}")
 for a in out:
     print(f"{a[0]:^15}{a[1][0]:^15}{a[1][1]:^15}{a[1][4]:^15}{a[1][3]:^20}{a[1][2]:^20}")
-print(f"\nAverage Waiting Time : {avgWaitTime}\n Average Turn-Around Time : {avgTATime}")
+print(f"\nAverage Waiting Time : {avgWaitTime}\nAverage Turn-Around Time : {avgTATime}")
