@@ -1,3 +1,5 @@
+# Program to implement Shortest Job First CPU scheduling algorithm
+
 print("Shortest Job First Algorithm")
 print("============================\n")
 
@@ -58,4 +60,4 @@ avgTATime /= N
 print(f"\n{headers[0]:^15}{headers[1]:^15}{headers[2]:^15}{headers[3]:^15}{headers[4]:^20}{headers[5]:^20}")
 for a in out:
     print(f"{a[0]:^15}{a[1][0]:^15}{a[1][1]:^15}{a[1][4]:^15}{a[1][3]:^20}{a[1][2]:^20}")
-print(f"\nAverage Waiting Time : {avgWaitTime}\nAverage Turn-Around Time : {avgTATime}")
+print(f"\nAverage Waiting Time : {avgWaitTime:.2f}\nAverage Turn-Around Time : {avgTATime:.2f}")
