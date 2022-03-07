@@ -1,4 +1,4 @@
-# Program to implement Round Robin CPU scheduling algorithm
+# Program to implement Round Robin CPU scheduling algorithm with arrival times
 
 print("Round Robin scheduling Algorithm")
 print("================================\n")
