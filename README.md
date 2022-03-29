@@ -1,3 +1,3 @@
-# CPU Scheduling Algorithms
+# OS STUFF
 **********
-Implementations of a few CPU scheduling algorithms in Python
+Some OS stuff written in Python
