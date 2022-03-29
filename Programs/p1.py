@@ -1,26 +1,29 @@
 import os
 
 r, w = os.pipe()
-
 pid = os.fork()
 
-if pid > 0:
+if pid:
 	os.close(r)
 	w = os.fdopen(w,'w')
-	print("Parent process began.")
-	n = int(input("Enter number of entries :: "))
-	x  = []
+	x = []
+	n = int(input("Enter value of n : "))
+	print(f"Enter {n} numbers :")
 	for i in range(0,n):
 		x.append(int(input(f"Entry #{i+1} : ")))
-	y = ''
-	for z in x:
-		y += str(x) + ' '
-	os.write(w, y)
-	print(f"Parent wrote {x}")
+	w.write(str(x))
+	print(f"Parent wrote : {x}")
 	w.close()
 else:
 	os.close(w)
-	print("Child process began.")
 	r = os.fdopen(r)
-	print(f"Read {r.read()} from parent")
+	y = r.read()
+	y = y.split(", ")
+	print(f"Child read :")
+	for z in y:
+		s = ''
+		for i in z:
+			if i not in '[]':
+				s += i
+		print(int(s))
 	r.close()
