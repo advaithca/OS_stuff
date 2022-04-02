@@ -1,3 +1,5 @@
+# Parent sends numbers to child, child returns Prime numbers
+
 import os
 import math
 import numpy as np
@@ -56,7 +58,7 @@ else :
 	primes = str(arr)
 	if primes != '[]':
 		w1.write(primes)
-		print('Child >> Sent Primes to parent.')
+		print('Child  >> Sent Primes to parent.')
 	else:
-		print('Child >> No prime numbers to send.')
+		print('Child  >> No prime numbers to send.')
 	w1.close()

@@ -1,3 +1,5 @@
+# Parent sends n numbers to child
+
 import os
 
 r, w = os.pipe()
