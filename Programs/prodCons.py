@@ -12,7 +12,7 @@ def produce():
 
 def producer():
     front = 0
-    while True:
+    for _ in range(0,8):
         x = produce()
         empty.acquire()
         buff[front] = x
@@ -24,7 +24,7 @@ def consume(y):
 
 def consumer():
     rear = 0
-    while True:
+    for _ in range(0,8):
         full.acquire()
         y = buff[rear]
         empty.release()
