@@ -1,6 +1,9 @@
 #!/bin/bash
 # Program to find if string is palindrome or not
 
+RED="\e[31m"
+GREEN="\e[32m"
+NORMAL="\e[0m"
 read -p "Enter a string :: " s
 len=${#s}
 y=$[$len-1]
@@ -11,7 +14,7 @@ for ((i=0;i<$len;i++)) do
 done
 if [ $s = $reversed ]
 then
-	echo "$s is a palindrome."
+	echo -e "${GREEN} $s is a palindrome. ${NORMAL}"
 else
-	echo "$s is not a palindrome."
+	echo -e "${RED} $s is not a palindrome. ${NORMAL}"
 fi
