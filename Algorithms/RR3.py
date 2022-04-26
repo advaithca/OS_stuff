@@ -1,4 +1,7 @@
 #Program to implement Round Robin
+
+
+
 print("Round Robin Scheduling algorithm")
 print("================================")
 
@@ -19,25 +22,27 @@ for i in range(N):
     a = int(input(f"Enter arrival time of process {k} := "))
     b = int(input(f"Enter burst time of process {k} := "))
     out.append([k,[a,b,0,0,0],0])
-    bt.append(b)
 
 out.sort(key=lambda i: i[1][1], reverse=True)
-while True:
-    done = True
+bt = [x[1][1] for x in out]
+
+readyQ = []
+
+while t <= sum(bt):
     for i in range(N):
-        if bt[i] > 0:
-            done = False
-        if bt[i] > quantum:
-            t += quantum
-            bt[i] -= quantum
-        else:
-            if out[i][2] != 1:
-                t += bt[i]
-                out[i][1][2] += t - out[i][1][1] - out[i][1][0]
-                bt[i] = 0
-                out[i][2] = 1
-    if done == True:
-        break
+        if out[i][1][0] <= t:
+            readyQ.append([out[i],i])
+    if readyQ:
+        for i in range(len(readyQ)):
+            a = readyQ.pop(0)
+            if a[0][1][1] > 0 and a[0][1][1] > quantum:
+                a[0][1][1] -= quantum
+                t += quantum
+                readyQ.append(a)
+            elif a[0][1][1] <= quantum:
+                t += a[0][1][1]
+                a[0][1][1] = 0
+                out[a[1]][1][2] = t
 
 for i in range(N):
     out[i][1][3] = out[i][1][1] + out[i][1][2]
